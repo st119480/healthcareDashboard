@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  license_number: MyString
+  qualification: MyString
+  user: one
+  specialty: one
+
+two:
+  license_number: MyString
+  qualification: MyString
+  user: two
+  specialty: two

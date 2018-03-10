@@ -1,0 +1,97 @@
+<%= form_with(model: test, local: true) do |form| %>
+  <% if test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :prev_diagnosis %>
+    <%= form.text_area :prev_diagnosis, id: :test_prev_diagnosis %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prev_medication %>
+    <%= form.text_area :prev_medication, id: :test_prev_medication %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ongoing_medication %>
+    <%= form.text_area :ongoing_medication, id: :test_ongoing_medication %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pulse_rate %>
+    <%= form.number_field :pulse_rate, id: :test_pulse_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body_temperature %>
+    <%= form.text_field :body_temperature, id: :test_body_temperature %>
+  </div>
+
+  <div class="field">
+    <%= form.label :respiratory_rate %>
+    <%= form.number_field :respiratory_rate, id: :test_respiratory_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bp_systolic %>
+    <%= form.number_field :bp_systolic, id: :test_bp_systolic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bp_diastolic %>
+    <%= form.number_field :bp_diastolic, id: :test_bp_diastolic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blood_oxygen_saturation %>
+    <%= form.number_field :blood_oxygen_saturation, id: :test_blood_oxygen_saturation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blood_sugar_pp %>
+    <%= form.number_field :blood_sugar_pp, id: :test_blood_sugar_pp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blood_sugar_fasting %>
+    <%= form.number_field :blood_sugar_fasting, id: :test_blood_sugar_fasting %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.number_field :height, id: :test_height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight, id: :test_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bmi %>
+    <%= form.text_field :bmi, id: :test_bmi %>
+  </div>
+
+  <div class="field">
+    <%= form.label :test_date %>
+    <%= form.date_select :test_date, id: :test_test_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recommendation %>
+    <%= form.text_area :recommendation, id: :test_recommendation %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

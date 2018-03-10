@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HealthcareDashboard</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Healthcare Dashboard</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<% if flash[:error] %>
+  <div id="error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<div id="container">
+
+
+  <main role="main">
+
+    <div class="container-fluid">
+      <% if flash[:error].present? %>
+        <p class='alert alert-danger'><%= flash[:error] %></p>
+
+      <% elseif flash[:notice].present? %>
+        <p class='alert alert-warning'><%= flash[:notice] %></p>
+
+      <% else flash[:alert].present? %>
+        <p class='alert alert-danger'><%= flash[:alert] %></p>
+      <% end %>
+      <%= yield %>
+    </div>
+
+  </main>
+
+  <div id="user_status">
+    <% if user_signed_in? %>
+      Welcome <%= current_user.username %>! Not you?
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%#= link_to "Register", new_user_registration_path %>
+      <%= link_to "Sign in", new_user_session_path %>.
+    <% end %>
+  </div>
+
+  <hr>
+
+  <footer class="container">
+    <p>&copy; Team Harmony 2018</p>
+  </footer>
+
+</div>
+</body>
 </html>
