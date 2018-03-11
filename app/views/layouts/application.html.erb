@@ -6,6 +6,11 @@
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <% if user_signed_in? %>
+    <%= link_to "My Profile", user_path(current_user.id) %>.
+  <% end %>
+
 </head>
 
 <body>
@@ -15,6 +20,7 @@
   </div>
 <% end %>
 <div id="container">
+
 
 
   <main role="main">
@@ -33,16 +39,6 @@
     </div>
 
   </main>
-
-  <div id="user_status">
-    <% if user_signed_in? %>
-      Welcome <%= current_user.username %>! Not you?
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%#= link_to "Register", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>.
-    <% end %>
-  </div>
 
   <hr>
 

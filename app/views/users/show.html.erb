@@ -1,3 +1,32 @@
-<h2>User Profile</h2>
+<h2>My Profile</h2>
+<div id="user_status">
+  <% if user_signed_in? %>
+    Welcome <%= current_user.username %>! Not you?
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%#= link_to "Register", new_user_registration_path %>
+    <%= link_to "Sign in", new_user_session_path %>.
+  <% end %>
+</div>
 
-<%= link_to 'Edit User', edit_user_registration_path %>
+<%= link_to 'Edit Profile', edit_user_registration_path %>
+
+<div>
+  <hr>
+  <br>
+  <% if user_signed_in? %>
+    <% if current_user.role_id == 1 %>
+      <%= link_to('Add New User', new_user_path, class: "btn btn-success") %>
+      <%= link_to('All Users', users_admin_index_path, class: "btn btn-success") %>
+    <% end %>
+  <br>
+  <br> <%= "Name: " %> <%= current_user.first_name %> <%= current_user.last_name %>
+  <br> <%= "Birth Date: " %> <%= current_user.dob %>
+  <br> <%= "Gender: " %> <%= current_user.gender%>
+  <br> <%= "Province: " %> <%= current_user.province %>
+  <br> <%= "City or Village: " %> <%= current_user.city_village %>
+  <br> <%= "Address Line 1: " %> <%= current_user.address_line_1 %>
+  <br> <%= "Contact: " %> <%= current_user.contact %>
+  <% end %>
+  <br>
+</div>
